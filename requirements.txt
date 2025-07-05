@@ -1,0 +1,11 @@
+magic
+mcp
+tabulate
+browser_use
+arxiv
+selenium
+youtube-transcript-api
+python-dotenv
+pydantic>=2
+openai-agents
+openai
