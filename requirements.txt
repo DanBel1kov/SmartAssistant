@@ -8,3 +8,4 @@ python-dotenv
 pydantic>=2
 openai-agents
 openai
+wikipedia

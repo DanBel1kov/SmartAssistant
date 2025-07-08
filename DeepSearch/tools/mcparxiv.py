@@ -332,7 +332,7 @@ class ArxivActionCollection(ActionCollection):
 
             # Perform search
             search = arxiv.Search(
-                query=search_query, max_results=300000, sort_by=sort_criterion, sort_order=sort_order_enum
+                query=search_query, max_results=200, sort_by=sort_criterion, sort_order=sort_order_enum
             )
 
             # Execute search and collect results
@@ -704,9 +704,10 @@ class ArxivActionCollection(ActionCollection):
         return ActionResponse(success=True, message=formatted_info, metadata=capabilities)
 
 
-# Default arguments for testing
 if __name__ == "__main__":
     import os
+    import asyncio          # ⬅️ добавляем
+    from dotenv import load_dotenv
 
     load_dotenv()
 
@@ -716,8 +717,16 @@ if __name__ == "__main__":
         workspace=os.getenv("AWORLD_WORKSPACE", "~"),
     )
 
-    try:
-        service = ArxivActionCollection(arguments)
-        service.run()
-    except Exception as e:
-        print(f"An error occurred: {e}: {traceback.format_exc()}")
+    service = ArxivActionCollection(arguments)
+
+    async def _demo():
+        resp = await service.mcp_search_papers(
+            query="large language models biology",
+            output_format="text",
+        )
+        print("success:", resp.success)
+        print(resp.message)
+        print(resp.metadata)
+
+    # запускаем корутину «по-синхронному»
+    asyncio.run(_demo())
