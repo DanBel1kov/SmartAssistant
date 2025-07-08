@@ -105,8 +105,10 @@ class YouTubeActionCollection(ActionCollection):
 
             # Access snippets from FetchedTranscript
             for entry in result.transcript.snippets:
-                start_time = entry["start"]
-                text = entry["text"]
+                # start_time = entry["start"]
+                # text = entry["text"]
+                start_time = entry.start
+                text = entry.text
 
                 minutes, seconds = divmod(int(start_time), 60)
                 timestamp = f"{minutes:02d}:{seconds:02d}"
@@ -121,8 +123,10 @@ class YouTubeActionCollection(ActionCollection):
 
             # Access snippets from FetchedTranscript
             for entry in result.transcript.snippets:
-                start_time = entry["start"]
-                text: str = entry["text"]
+                # start_time = entry["start"]
+                # text: str = entry["text"]
+                start_time = entry.start
+                text: str = entry.text
 
                 minutes, seconds = divmod(int(start_time), 60)
                 timestamp = f"{minutes:02d}:{seconds:02d}"

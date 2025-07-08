@@ -1,7 +1,7 @@
 # agent.py
 import asyncio
 from agents import Agent, Runner
-from tools import download_youtube_video, extract_youtube_transcript
+from .tools import download_youtube_video, extract_youtube_transcript
 
 assistant = Agent(
     name="YouTube Assistant",
@@ -17,7 +17,7 @@ assistant = Agent(
 async def main():
     res = await Runner.run(
         assistant,
-        "Скачай видео https://youtu.be/dQw4w9WgXcQ и пришли русские субтитры",
+        "Скачай видео https://www.youtube.com/watch?v=vXMDVnXGsW8 и пришли русские субтитры",
     )
     print(res.final_output)
 

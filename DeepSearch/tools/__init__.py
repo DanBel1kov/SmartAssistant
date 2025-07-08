@@ -1,5 +1,5 @@
-from youtube_service import yt_service
 from agents import function_tool
+from .youtube import yt_service
 
 @function_tool(name_override="download_youtube_video")
 async def download_youtube_video(

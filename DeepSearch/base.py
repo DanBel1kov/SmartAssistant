@@ -5,6 +5,7 @@ from typing import Any, Literal
 
 from mcp.server import FastMCP
 from pydantic import BaseModel, Field
+from logs.util import Color
 
 from DeepSearch.utils import color_log, setup_logger
 
